@@ -6,9 +6,7 @@ app = Flask(__name__)
 
 API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-base"
 
-headers = {
-    "Authorization": "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"
-}
+headers={}
 
 
 def extract_text_from_pdf(file):
