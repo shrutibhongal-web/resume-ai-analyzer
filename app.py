@@ -11,18 +11,25 @@ headers={
 }
 
 
+import tempfile
+
 def extract_text_from_pdf(file):
 
-    text=""
+    text = ""
 
     try:
-        with pdfplumber.open(file) as pdf:
-            for page in pdf.pages:
-                t = page.extract_text()
-                if t:
-                    text += t.lower()
-    except:
-        text=""
+        with tempfile.NamedTemporaryFile(delete=False) as temp:
+            file.save(temp.name)
+
+            with pdfplumber.open(temp.name) as pdf:
+                for page in pdf.pages:
+                    t = page.extract_text()
+                    if t:
+                        text += t.lower()
+
+    except Exception as e:
+        print("PDF Error:", e)
+        text = ""
 
     return text
 
