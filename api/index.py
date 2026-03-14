@@ -11,15 +11,10 @@ def home():
         file = request.files.get("resume")
 
         if file:
-            
-            filepath = os.path.join("uploads", file.filename)
             os.makedirs("uploads", exist_ok=True)
+            filepath = os.path.join("uploads", file.filename)
             file.save(filepath)
 
-            # Temporary result
-            ai_result = "Resume uploaded successfully! AI analysis will come here."
+            ai_result = "Resume uploaded successfully! 🎉"
 
     return render_template("index.html", ai_result=ai_result)
-
-if __name__ == "__main__":
-    app.run()
