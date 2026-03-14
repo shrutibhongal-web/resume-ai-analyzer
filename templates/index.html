@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AI Resume Analyzer</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#0b1220;
+color:white;
+display:flex;
+}
+
+.sidebar{
+width:230px;
+background:#020617;
+height:100vh;
+padding:20px;
+}
+
+.sidebar h2{
+color:#60a5fa;
+margin-bottom:40px;
+}
+
+.sidebar a{
+display:block;
+color:#cbd5f5;
+padding:12px;
+margin-bottom:10px;
+text-decoration:none;
+border-radius:8px;
+}
+
+.sidebar a:hover{
+background:#1e293b;
+}
+
+.main{
+flex:1;
+padding:30px;
+}
+
+.card{
+background:#111827;
+padding:25px;
+border-radius:12px;
+margin-bottom:25px;
+border:1px solid #1f2937;
+}
+
+.upload{
+border:2px dashed #334155;
+padding:40px;
+text-align:center;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+button{
+margin-top:15px;
+padding:12px 20px;
+background:#3b82f6;
+border:none;
+border-radius:8px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+pre{
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+white-space:pre-wrap;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>Resume AI</h2>
+
+<a href="/">Dashboard</a>
+<a href="#upload">Analyze Resume</a>
+
+</div>
+
+<div class="main">
+
+<div class="card">
+
+<h2>Welcome to AI Resume Analyzer</h2>
+
+<p style="color:#9ca3af;">
+Upload your resume to analyze skill gaps and get AI suggestions.
+</p>
+
+</div>
+
+<div class="card" id="upload">
+
+<h2>Upload Resume</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<div class="upload">
+
+<p>Upload your Resume PDF</p>
+
+<input type="file" name="resume">
+
+</div>
+
+<button type="submit">Analyze Resume</button>
+
+</form>
+
+</div>
+
+{% if ai_result %}
+
+<div class="card">
+
+<h2>AI Resume Analysis Result</h2>
+
+<pre>{{ ai_result }}</pre>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
